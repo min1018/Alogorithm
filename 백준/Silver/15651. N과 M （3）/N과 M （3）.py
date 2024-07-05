@@ -1,12 +1,7 @@
-n, m = map(int, input().split(" "))
-nums = []
-def dfs():
-  if len(nums) == m:
-    print(*nums)
-    return 
-  for i in range(1, n+1):
-    nums.append(i)
-    dfs()
-    nums.pop()
+from itertools import product 
 
-dfs()
+n, m = map(int, input().split(" "))
+nums = [i for i in range(1, n+1)]
+result = product(nums, repeat = m)
+for x in result:
+  print(*x)
