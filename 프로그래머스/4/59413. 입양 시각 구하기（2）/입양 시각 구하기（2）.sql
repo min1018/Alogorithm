@@ -1,7 +1,7 @@
 SET@HOUR = -1;
-
-SELECT @HOUR := @HOUR+1 AS 'HOUR', (SELECT COUNT(ANIMAL_ID)
-                                   FROM ANIMAL_OUTS
-                                   WHERE HOUR(DATETIME) = @HOUR) AS 'COUNT'
+SELECT @HOUR := @HOUR + 1 AS 'HOUR', (SELECT COUNT(ANIMAL_ID)
+                                      FROM ANIMAL_OUTS 
+                                      WHERE HOUR(DATETIME) = @HOUR) AS 'COUNT'
 FROM ANIMAL_OUTS
-WHERE @HOUR < 23;
+WHERE @HOUR<23
+ORDER BY HOUR;
