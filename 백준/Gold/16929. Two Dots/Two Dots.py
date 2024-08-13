@@ -6,7 +6,7 @@ n, m = map(int, input().split(" "))
 graph = [list(input().strip()) for _ in range(n)]
 
 # visited 배열을 매번 새로 만들 필요 없음 한번 방문한 곳에서 사이클 안되면 어차피 안됨 
-# bfs 아니고 dfs로 접근해야, 갈길 쭉 가야하니까 
+
 
 ans = False
 
