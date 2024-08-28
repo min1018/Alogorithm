@@ -1,34 +1,33 @@
 from collections import deque 
 
-def solution(s):
-    answer = 0
-    s = deque(s)
-    for _ in range(len(s)):
-        s.rotate(-1)
-        if check(s) == 1:
-            answer += 1
-
-    return answer
-
 def check(s):
-    left = ['(', '[', '{']
-    keep = deque()
-    
-    for i in s:
-        if i in left:
-            keep.append(i)
-        else:
-            if keep:
-                val = keep.pop()
-                if i == ')' and val != '(':
-                    return 0
-                elif i == '}' and val != '{':
-                    return 0
-                elif i == ']' and val != '[':
-                    return 
+    temp = []
+    for c in s:
+        if c == '(' or c == '[' or c == '{':
+            temp.append(c)
+        elif c == ')':
+            if temp and temp[-1] == '(':
+                del temp[-1]
             else:
                 return 0
-    if len(keep) != 0:
-        return 0
-    return 1
-                    
+        elif c == ']':
+            if temp and temp[-1] == '[':
+                del temp[-1]
+            else:
+                return 0
+        elif c == '}':
+            if temp and temp[-1] == '{':
+                del temp[-1]
+            else:
+                return 0
+    if temp: return 0 # 예외
+    return 1   
+    
+def solution(s):
+    answer = 0
+    s = list(s)
+    for i in range(len(s)):
+        s = deque(s)
+        s.rotate()
+        answer += check(s)
+    return answer
