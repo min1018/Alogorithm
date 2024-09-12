@@ -1,20 +1,23 @@
 def solution(storey):
+    sta = 10
     answer = 0
     while storey:
-        remainder = storey % 10 
-        
-        if remainder > 5:
-            answer += (10 - remainder)
-            storey += 10
-            
-        elif remainder < 5:
-            answer += remainder 
-            
+        storey, temp = divmod(storey, sta)
+        #print(sta, storey, temp)
+        if temp > 5:
+            answer += (10-temp)
+            storey += 1
+        elif temp == 5:
+            if storey % 10 >= 5:
+                answer += (10-temp)
+                storey += 1
+            else:
+                answer+=temp
         else:
-            if (storey // 10) % 10 > 4:
-                storey += 10
-            answer += remainder 
-        storey //= 10
+            answer += temp
         
+
     return answer
 
+# 0층 아래로는 움직이지 않음 
+# 돌을 최소한으로 아껴서 이동 
