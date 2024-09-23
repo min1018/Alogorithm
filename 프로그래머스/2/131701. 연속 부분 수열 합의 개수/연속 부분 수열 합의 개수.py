@@ -1,11 +1,10 @@
 def solution(elements):
-    length = len(elements)
     poss = set()
-
-    for i in range(length):
-        ssum = elements[i]
-        poss.add(ssum)
-        for k in range(i+1, i+length):
-            ssum += elements[k%length]
-            poss.add(ssum)
+    n = len(elements)
+    elements += elements
+    print(elements)
+    for i in range(n):
+        for k in range(n):
+            poss.add(sum(elements[k: k+i]))
     return len(poss)
+        
