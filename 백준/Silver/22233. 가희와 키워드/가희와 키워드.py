@@ -1,17 +1,14 @@
 import sys
 
 n, m = map(int, sys.stdin.readline().split(" "))
-dic = {}
+nums = []
 for _ in range(n):
-    dic[input().strip()] = 1
+    nums.append(sys.stdin.readline().rstrip())
     
-answer = n
+nums = set(nums)
 
 for _ in range(m):
-    temp = list(sys.stdin.readline().rstrip().split(","))
-    for word in temp:
-        if word in dic:
-            if dic[word] == 1:
-                answer -= 1
-            dic[word] -= 1
-    print(answer)            
+    temp = set(list(sys.stdin.readline().rstrip().split(",")))
+    nums -= temp
+    
+    print(len(nums))            
