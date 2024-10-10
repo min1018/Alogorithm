@@ -1,5 +1,4 @@
--- 코드를 작성해주세요
-SELECT HR_DEPARTMENT.DEPT_ID, DEPT_NAME_EN, ROUND(AVG(SAL),0) AS AVG_SAL
-FROM HR_EMPLOYEES JOIN HR_DEPARTMENT ON HR_EMPLOYEES.DEPT_ID = HR_DEPARTMENT.DEPT_ID 
-GROUP BY HR_DEPARTMENT.DEPT_ID
-ORDER BY AVG(SAL) DESC;
+select distinct d.dept_id, dept_name_en, round(avg(sal),0) as avg_sal
+from hr_department as d join hr_employees as e on d.dept_id = e.dept_id
+group by e.dept_id
+order by avg_sal desc;
